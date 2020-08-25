@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai2</title>
+</head>
+<body>
+<input type="text" id="banKinh" oninput="cal()" placeholder="enter your radius">
+<div>diện tích: <span id="dienTich"></span> </div>
+<div>chu vi: <span id="chuVi"></span> </div>
+<script>
+    function dienTich(radius){
+        let result = radius * radius * 3.14;
+        return result;
+    }
+    function chuVi(radius){
+        let result = radius * 2 * 3.14;
+        return result;
+    }
+    function  cal(){
+        let radius = document.getElementById("banKinh").value;
+        let areaCircle = dienTich(radius);
+        let perimeterCircle = chuVi(radius);
+        document.getElementById('dienTich').innerHTML = areaCircle;
+        document.getElementById('chuVi').innerHTML = perimeterCircle;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai1</title>
+</head>
+<body>
+<input type="text"id="input" oninput="checkSquare()">
+<div>result: <span id="result"></span></div>
+<script>
+    function square(number){
+        return number * number;
+    }
+    function checkSquare(){
+        let input = document.getElementById('input').value;
+        let result = square(input);
+        document.getElementById('result').innerHTML = result;
+    }
+</script>
+</body>
+</html>

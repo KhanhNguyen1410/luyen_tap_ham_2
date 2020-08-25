@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="input" placeholder="nhập kí tự"> <input type="button" value="checkType" onclick="checkNum()">
+<div>result: <span id="result"></span></div>
+<script>
+    function checkNumber(str) {
+        let string = "0123456789";
+        for (let i = 0; i < str.length; i++) {
+            if (string.indexOf(str[i])<0) {
+                return false;
+            }
+        } return true;
+    }
+    function checkNum(){
+        let input = document.getElementById("input").value;
+       if (checkNumber(input)){
+           document.getElementById("result").innerHTML = "kí tự số";
+       } else {
+           document.getElementById("result").innerHTML = "kí tự chữ";
+       }
+
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quan li</title>
+</head>
+<body onload="drawTable()">
+<style>
+    table {
+        width: 300px;
+        height: 300px;
+        border-collapse: collapse;
+    }
+</style>
+<h3>Add New Product</h3>
+<input type="text" id="newProduct" placeholder="New Product">
+<input type="button" onclick="addProduct()" value="Add">
+<h4>Display All Product </h4>
+<div id="display"></div>
+<script>
+    let listOfProduct = ["iphone 11", "iphone 11 pro", "iphone 11 proMax", "samsung note 20", "samsung note 20 ultra", "samsung note 10 series"];
+    size = listOfProduct.length;
+    drawTable(listOfProduct);
+
+    function drawTable(arr) {
+        let rows = arr.length;
+        let list = "<table border='1'>";
+        list = list + "<tr>";
+        list = list + "<th>" + "stt" + "</th>";
+        list = list + "<th>" + "Product name" + "</th>";
+        list = list + "<th width='50'>" + "chỉnh sửa" + "</th>";
+        list = list + "<th width='50'>" + "xóa" + "</th>";
+        list = list + "<th width='30'>" + rows + "Products" + "</th>";
+        list = list + "</tr>";
+        for (let i = 0; i < rows; i++) {
+            list = list + "<tr>";
+            list = list + "<td>" + (i + 1) + "</td>"
+            list = list + "<td>" + arr[i] + "</td>"
+            list = list + "<td> <input type='button' value='edit' onclick='editProduct(" + i + ")'></td>"
+            list = list + "<td> <input type='button'value='delete' onclick='deleteProduct(" + i + ")'></td>"
+            list = list + "<td><input type='text' placeholder='note'> </td>"
+            list = list + "</tr>";
+        }
+
+        list = list + "</table>";
+        document.getElementById('display').innerHTML = list;
+    }
+
+    function saveProduct(Product) {
+        listOfProduct.push(Product);
+        drawTable(listOfProduct);
+    }
+
+    function addProduct() {
+        let Product = document.getElementById('newProduct').value;
+        if (Product != ""){
+            saveProduct(Product);
+            drawTable(listOfProduct);
+        }
+        else {
+            alert("please enter name product");
+        } document.getElementById('newProduct').focus();
+
+    }
+
+    function editProduct(index) {
+        let productNew = prompt("enter new product: ", listOfProduct[index]);
+        listOfProduct[index] = productNew;
+        drawTable(listOfProduct);
+    }
+
+    function deleteProduct(index) {
+        if (confirm("are you sure you wanna delete?")) {
+            listOfProduct.splice(index, 1);
+            drawTable(listOfProduct);
+        }
+
+    }
+
+</script>
+</body>
+</html>
